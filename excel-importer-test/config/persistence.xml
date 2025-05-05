@@ -8,4 +8,28 @@
             <property name="hibernate.id.new_generator_mappings" value="false"/>
         </properties>
     </persistence-unit>
+    <persistence-unit name="postgres">
+        <non-jta-data-source>postgres</non-jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="mysql">
+        <non-jta-data-source>mysql</non-jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="mariadb">
+        <non-jta-data-source>maria</non-jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="mssql">
+        <non-jta-data-source>mssql</non-jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
 </persistence>

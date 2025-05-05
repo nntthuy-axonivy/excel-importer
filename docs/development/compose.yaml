@@ -1,0 +1,35 @@
+<!-- Dear Bug Hunter,
+  This credential is intentionally included for educational purposes only and does not provide access to any production systems.
+  Please do not submit it as part of our bug bounty program.
+-->
+services:
+
+  postgres:
+    image: postgres:17
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: nimda
+ 
+  mysql:
+    image: mysql:9.1
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: nimda
+
+  mariadb:
+    image: mariadb:11
+    ports:
+      - 3010:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: nimda
+      
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: secure1234PASSWORD!
+
