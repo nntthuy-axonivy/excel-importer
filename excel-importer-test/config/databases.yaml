@@ -28,4 +28,8 @@ Databases:
     Password: ${decrypt:a0w9NOgEdtueCDVQYyXcgG1iGyBOG2gjNfZTjGo8MM0=}
     Properties:
       encrypt: 'false'
-    
+  oracle:
+    Url: jdbc:oracle:thin:@//localhost:1521/FREEPDB1
+    Driver: oracle.jdbc.OracleDriver
+    UserName: SYSTEM
+    Password: ${decrypt:LtEQqeGP4ndLIOemOynoXA==}

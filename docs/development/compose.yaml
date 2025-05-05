@@ -33,3 +33,8 @@ services:
       ACCEPT_EULA: Y
       SA_PASSWORD: secure1234PASSWORD!
 
+  oracle:
+    image: docker-registry.ivyteam.io/oracle/database-orapdb:23.5.0-free
+    ports:
+      - 1521:1521
+      - 5529:5500
