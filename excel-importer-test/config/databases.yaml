@@ -1,5 +1,31 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/app/12.0.0/databases.json
 Databases:
   inMemory:
     Url: jdbc:hsqldb:mem:oblivion
     Driver: org.hsqldb.jdbc.JDBCDriver
     Password: ${decrypt:}
+  postgres:
+    Url: jdbc:postgresql://localhost:5432/fresh
+    Driver: org.postgresql.Driver
+    UserName: postgres
+    Password: ${decrypt:LtEQqeGP4ndLIOemOynoXA==}
+  mysql:
+    Url: jdbc:mysql://localhost:3306/fresh
+    Driver: com.mysql.cj.jdbc.Driver
+    UserName: root
+    Password: ${decrypt:LtEQqeGP4ndLIOemOynoXA==}
+    Properties:
+      useSSL: 'false'
+  maria:
+    Url: jdbc:mariadb://localhost:3010/fresh
+    Driver: org.mariadb.jdbc.Driver
+    UserName: root
+    Password: ${decrypt:LtEQqeGP4ndLIOemOynoXA==}
+  mssql:
+    Url: jdbc:sqlserver://localhost:1433;databaseName=fresh
+    Driver: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    UserName: SA
+    Password: ${decrypt:a0w9NOgEdtueCDVQYyXcgG1iGyBOG2gjNfZTjGo8MM0=}
+    Properties:
+      encrypt: 'false'
+    

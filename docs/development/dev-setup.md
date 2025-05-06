@@ -2,7 +2,7 @@
 
 The excel-importer is an Eclipse RCP extension, contributing to the Axon Ivy Designer featureset. This guide explains the steps to setup the development environment for it.
 
-It was written for LTS10 and EclipseRCP 2024-03.
+It was written for LTS12 and EclipseRCP 2024-03.
 
 ### Eclipse RCP
 
@@ -100,3 +100,21 @@ The most important transformations when importing Excel sheets to Dialogs are te
 These tests are of course also executed in the actions build pipeline, using Maven.
 
 ![run-tests-inDesigner.png](run-tests-inDesigner.png)
+
+### Database
+
+The supported databases of this connector can be started with Docker Compose.
+Once you have Docker installed, you can simply run a test-db like this.
+
+```bash
+# run all DBs
+docker compose up
+
+# run Postgres
+docker compose up postgres
+
+# ... or any other
+docker compose up mariadb
+docker compose up mysql
+docker compose up mssql
+```
