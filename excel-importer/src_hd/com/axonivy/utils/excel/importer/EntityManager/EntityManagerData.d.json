@@ -1,0 +1,15 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "EntityManagerData",
+  "namespace" : "com.axonivy.utils.excel.importer.EntityManager",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "entries",
+    "type" : "java.util.List<com.axonivy.utils.excel.importer.MyEntity>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "edit",
+    "type" : "com.axonivy.utils.excel.importer.MyEntity",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

@@ -1,0 +1,182 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "18B4D3FDEC970DD1",
+  "kind" : "HTML_DIALOG",
+  "config" : {
+    "data" : "com.axonivy.utils.excel.importer.EntityManager.EntityManagerData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "HtmlDialogStart",
+      "name" : "start()",
+      "config" : {
+        "signature" : "start",
+        "guid" : "18B4D3FDECD3F15A"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f7", "to" : "f6" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "HtmlDialogEventStart",
+      "name" : "close",
+      "config" : {
+        "guid" : "18B4D3FDED5B0F1F"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 160 }
+      },
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "HtmlDialogExit",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 160 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "Script",
+      "name" : [
+        "load",
+        "db"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "out.entries = ivy.persistence.myUnit",
+            "  .findAll(com.axonivy.utils.excel.importer.MyEntity.class);"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "delete(MyEntity)",
+      "config" : {
+        "signature" : "delete",
+        "input" : {
+          "params" : [
+            { "name" : "entity", "type" : "com.axonivy.utils.excel.importer.MyEntity", "desc" : "" }
+          ],
+          "map" : { },
+          "code" : [
+            "import com.axonivy.utils.excel.importer.MyEntity;",
+            "",
+            "MyEntity loaded = ivy.persistence.myUnit.find(MyEntity.class, param.entity.getId()) as MyEntity;",
+            "ivy.persistence.myUnit.remove(loaded);"
+          ]
+        },
+        "guid" : "18B5C47DE677D3E2"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 224 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f9" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 224 }
+      }
+    }, {
+      "id" : "f11",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "edit(MyEntity)",
+      "config" : {
+        "signature" : "edit",
+        "input" : {
+          "params" : [
+            { "name" : "entity", "type" : "com.axonivy.utils.excel.importer.MyEntity", "desc" : "" }
+          ],
+          "map" : {
+            "out.edit" : "param.entity"
+          }
+        },
+        "guid" : "18B62027AEABD10C"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 288 }
+      },
+      "connect" : [
+        { "id" : "f13", "to" : "f12" }
+      ]
+    }, {
+      "id" : "f12",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 288 }
+      }
+    }, {
+      "id" : "f14",
+      "type" : "HtmlDialogEventStart",
+      "name" : "save",
+      "config" : {
+        "guid" : "18B6204794B9E8F8",
+        "output" : {
+          "code" : [
+            "if (out.edit.id < 1) {",
+            "  ivy.persistence.myUnit.persist(out.edit);",
+            "} else {",
+            "  ivy.persistence.myUnit.merge(out.edit);",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f15" }
+      ]
+    }, {
+      "id" : "f15",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 352 }
+      }
+    }, {
+      "id" : "f17",
+      "type" : "HtmlDialogEventStart",
+      "name" : "add",
+      "config" : {
+        "guid" : "18B65DD28ACDAFDE",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.edit" : "new com.axonivy.utils.excel.importer.MyEntity()"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 416 }
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f18" }
+      ]
+    }, {
+      "id" : "f18",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 224, "y" : 416 }
+      }
+    } ]
+}

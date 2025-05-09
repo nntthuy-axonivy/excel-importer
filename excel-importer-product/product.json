@@ -5,7 +5,7 @@
       "data": {
         "dependencies": [
           {
-            "groupId": "com.axonivy.util.excel",
+            "groupId": "com.axonivy.utils.excel",
             "artifactId": "excel-importer",
             "version": "${version}"
           }
