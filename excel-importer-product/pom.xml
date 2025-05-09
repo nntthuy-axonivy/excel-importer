@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.utils.excel</groupId>
   <artifactId>excel-importer-product</artifactId>
-  <version>12.0.3-SNAPSHOT</version>
+  <version>12.0.4-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
