@@ -1,26 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.axonivy.ivy.api</groupId>
+    <artifactId>ivy-project-parent</artifactId>
+    <version>13.1.1</version>
+    <relativePath></relativePath>
+  </parent>
   <groupId>com.axonivy.utils.excel</groupId>
   <artifactId>excel-importer</artifactId>
-  <version>12.0.4-SNAPSHOT</version>
+  <version>13.1.1-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
-
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <ivy.release>13.1</ivy.release>
     <java.compiler.compliance>21</java.compiler.compliance>
     <tycho.version>4.0.10</tycho.version>
-    <ivy.release>12.0</ivy.release>
   </properties>
-
+  <dependencies>
+    <dependency>
+      <groupId>com.axonivy.ivy.api</groupId>
+      <artifactId>ivy-api</artifactId>
+    </dependency>
+  </dependencies>
   <repositories>
     <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
       <id>ivy.lts.release</id>
-      <layout>p2</layout>
       <url>https://p2.axonivy.com/p2/${ivy.release}/</url>
+      <layout>p2</layout>
+    </repository>
+    <repository>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <id>maven.axonivy.com</id>
+      <url>https://maven.axonivy.com</url>
     </repository>
   </repositories>
-
   <build>
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
@@ -28,62 +51,29 @@
         <directory>src_hd</directory>
       </resource>
     </resources>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-        <version>${tycho.version}</version>
-        <extensions>true</extensions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>${java.compiler.compliance}</source>
-          <target>${java.compiler.compliance}</target>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20</version>
-        <executions>
-          <execution>
-            <id>unit.test</id>
-            <goals>
-              <goal>test</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-
     <pluginManagement>
       <plugins>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>tycho-compiler-plugin</artifactId>
-          <configuration>
-            <source>${java.compiler.compliance}</source>
-            <target>${java.compiler.compliance}</target>
-            <!-- ignore access restriction: as we use an internal JAXB interfaces -->
-            <compilerArgument>-err:none</compilerArgument>
-          </configuration>
           <executions>
             <execution>
               <id>default-testCompile</id>
               <phase>never</phase>
             </execution>
           </executions>
+          <configuration>
+            <source>${java.compiler.compliance}</source>
+            <target>${java.compiler.compliance}</target>
+            <compilerArgument>-err:none</compilerArgument>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.eclipse.tycho</groupId>
           <artifactId>target-platform-configuration</artifactId>
           <version>${tycho.version}</version>
         </plugin>
-
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.6.1</version>
           <executions>
@@ -96,13 +86,10 @@
             </execution>
           </executions>
         </plugin>
-
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>3.0.0-M1</version>
         </plugin>
-
         <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
@@ -144,15 +131,40 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${java.compiler.compliance}</source>
+          <target>${java.compiler.compliance}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.20</version>
+        <executions>
+          <execution>
+            <id>unit.test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
-
   <profiles>
     <profile>
       <id>ivy.package.linux64</id>
       <activation>
         <property>
           <name>ivy.package.linux64</name>
-          <!-- (disabled by default, only activated if parameter "ivy.package.linux64" is set to "true") -->
           <value>true</value>
         </property>
       </activation>
