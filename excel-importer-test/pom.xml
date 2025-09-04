@@ -11,6 +11,7 @@
   <artifactId>excel-importer-test</artifactId>
   <version>13.1.2-SNAPSHOT</version>
   <packaging>iar</packaging>
+  
   <dependencies>
     <dependency>
       <groupId>com.axonivy.utils.excel</groupId>
@@ -39,6 +40,7 @@
       <artifactId>ivy-api</artifactId>
     </dependency>
   </dependencies>
+
   <repositories>
     <repository>
       <snapshots>
@@ -52,7 +54,7 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
       <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots</url>
     </repository>
     <repository>
       <snapshots>
@@ -68,9 +70,10 @@
         <updatePolicy>always</updatePolicy>
       </snapshots>
       <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <url>https://central.sonatype.com/repository/maven-snapshots</url>
     </pluginRepository>
   </pluginRepositories>
+
   <build>
     <testSourceDirectory>src_test</testSourceDirectory>
     <pluginManagement>
