@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.axonivy.utils.excel</groupId>
   <artifactId>excel-importer-modules</artifactId>
-  <version>12.0.4-SNAPSHOT</version>
+  <version>13.1.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>excel-importer</name>
 
@@ -18,7 +18,7 @@
   </scm>
   
   <properties>
-    <tycho.version>3.0.4</tycho.version>
+    <tycho.version>4.0.10</tycho.version>
     <maven.scm.plugin>2.0.1</maven.scm.plugin>
     <release.goals>org.eclipse.tycho:tycho-versions-plugin:${tycho.version}:update-eclipse-metadata org.apache.maven.plugins:maven-scm-plugin:${maven.scm.plugin}:add org.apache.maven.plugins:maven-scm-plugin:${maven.scm.plugin}:checkin</release.goals>
   </properties>

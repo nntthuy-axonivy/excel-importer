@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: excel-importer
 Bundle-SymbolicName: excel-importer;singleton:=true
-Bundle-Version: 12.0.4.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-Version: 13.1.2.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: excel.importer
 Export-Package: com.axonivy.utils.excel.importer
 Require-Bundle: ch.ivyteam.ivy.scripting.dataclass,
